@@ -1,32 +1,110 @@
-###KwikkConnect - Case Management & Expert Notification System
-Description:
-A comprehensive case management system with real-time notifications for experts, featuring a web dashboard and Android app.
-🚀 Features
-Web Application: Case management dashboard, expert matching, real-time collaboration, timeline tracking, postmortem analysis, browser notifications, note-taking, and case sharing.
-Expert Dashboard: Expert login, case overview, real-time status updates, notification management, and statistics.
-Backend API: RESTful API for case and expert management, real-time notifications, expert registration, and case assignment.
-Android App (Template): Material design UI, expert authentication, case management, notification support, and API integration.
-📁 Project Structure
-kwikkconnect/ - Web Application (React + Vite)
-backend/ - Node.js Backend API
-android-app/ - Android Application Template
-start-all.sh / start-all.bat - Scripts to start all services
-🛠️ Setup Instructions
-Prerequisites: Node.js (v16+), npm/yarn, Android Studio (for Android app), modern web browser.
-Quick Start:
-Install dependencies for both frontend and backend.
-Start all services using the provided scripts or manually.
-Access the web app at http://localhost:4028.
-🔧 Configuration
-Backend: Port 4000 (configurable), CORS enabled, in-memory storage for demo.
-Web App: Port 4028, API URL configurable.
-Notifications: Browser notifications requested on expert dashboard.
-📱 Usage
-Case Managers: Create and manage cases, assign experts, monitor progress, add notes, and share cases.
-Experts: View assigned cases, update status, receive notifications, and use the Android app for mobile access.
-🔌 API Endpoints
-Endpoints for expert management and case management are listed for easy reference.
-🔔 Notification System
-Details on browser notifications, their features, and how they work.
-🎨 UI/UX Features
-Responsive design, dark/light theme, material design, accessibility, and more.
+# 🚀 KwikkConnect - Case Management & Expert Notification System
+
+KwikkConnect is a **comprehensive case management platform** designed for real-time collaboration between support engineers and domain experts. With a seamless **web dashboard** and a **mobile-friendly Android app**, the system streamlines expert discovery, incident resolution, and smart postmortem generation.
+
+---
+
+## 📦 Project Structure
+```
+kwikkconnect/     # Web Application (React + Vite)
+backend/          # Node.js Backend API
+android-app/      # Android Application Template
+start-all.sh      # Unix script to run backend + frontend
+start-all.bat     # Windows batch script
+```
+
+---
+
+## ✨ Features
+
+### 🌐 Web Application
+- Case management dashboard
+- AI-based expert matching
+- Real-time chat collaboration (Swarm Room)
+- Timeline tracking for every incident
+- AI-powered postmortem generator
+- Browser notification system
+- Notes and documentation upload
+- Case sharing with link support
+
+### 👨‍💻 Expert Dashboard
+- View assigned/open Cases
+- Accept/Reject case invitations
+- Track live status updates
+- Receive smart suggestions via AI Assistant
+- Notification control & expert stats overview
+
+### ⚙️ Backend API (Node.js)
+- RESTful APIs for case + expert management
+- Real-time expert notification triggering
+- In-memory storage for demo (can be replaced with DB)
+- CORS enabled for frontend connectivity
+
+### 📱 Android App (Material UI Template)
+- Expert login/authentication
+- Case tracking and push notifications
+- Mobile-first case status updates
+- API-integrated with backend
+
+---
+
+## 🛠️ Setup Instructions
+
+### ✅ Prerequisites
+- Node.js v16+
+- npm or yarn
+- Android Studio (for mobile app)
+- Modern browser (Chrome/Firefox/Edge)
+
+### 🚀 Quick Start
+```bash
+# 1. Clone the repo
+$ git clone https://github.com/your-org/kwikkconnect.git && cd kwikkconnect
+
+# 2. Install frontend dependencies
+$ cd kwikkconnect && npm install
+
+# 3. Install backend dependencies
+$ cd ../backend && npm install
+
+# 4. Start all services
+$ ./start-all.sh       # For Unix
+# or
+$ start-all.bat        # For Windows
+```
+
+Then open: [http://localhost:4028](http://localhost:4028) in your browser.
+
+---
+
+## 🔌 API Endpoints
+
+### Expert APIs
+- `POST /api/experts/register`
+- `GET /api/experts`
+- `PUT /api/experts/:id`
+
+### Case APIs
+- `POST /api/cases/create`
+- `GET /api/cases`
+- `PUT /api/cases/:id/assign`
+- `POST /api/cases/:id/resolve`
+
+---
+
+## 🔔 Notification System
+- Experts are notified via **browser notifications** when:
+  - A new Case is escalated to them
+  - There is a chat or timeline update
+- Experts can manage notifications from the dashboard
+
+---
+
+
+## 🤝 Contributions
+Contributions and feature requests are welcome! Submit issues or PRs through GitHub.
+
+---
+
+## 👨‍💼 Maintained By
+**Team KwikkConnect** — Streamlining expert resolution workflows, one case at a time.
