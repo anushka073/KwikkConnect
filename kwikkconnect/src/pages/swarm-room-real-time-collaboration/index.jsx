@@ -39,54 +39,46 @@ const SwarmRoomRealTimeCollaboration = () => {
   }, [location.state, searchParams]);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-background via-muted/60 to-accent/10">
       <NavigationHeader />
       <BreadcrumbNavigation />
-      
-      <main className="flex h-screen pt-16">
+      <main className="flex h-screen pt-16 gap-4 px-4">
         {/* Left Sidebar - Participants */}
-        <div className="w-80 border-r border-border bg-card">
+        <div className="w-80 max-w-xs flex-shrink-0">
           <ParticipantsPanel caseDetails={caseDetails} />
         </div>
-
         {/* Center - Chat Interface */}
-        <div className="flex-1 flex flex-col">
+        <div className="flex-1 flex flex-col min-w-0">
           <ChatInterface caseDetails={caseDetails} />
         </div>
-
         {/* Right Sidebar - Case Details & Timeline */}
-        <div className={`${isRightPanelCollapsed ? 'w-12' : 'w-96'} border-l border-border bg-card transition-all duration-300 relative`}>
+        <div className={`relative transition-all duration-500 ${isRightPanelCollapsed ? 'w-14' : 'w-[22rem]'} flex-shrink-0`}>
           <button
             onClick={() => setIsRightPanelCollapsed(!isRightPanelCollapsed)}
-            className="absolute -left-3 top-1/2 transform -translate-y-1/2 w-6 h-6 bg-background border border-border rounded-full flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors duration-200 z-10"
+            className="absolute -left-4 top-1/2 transform -translate-y-1/2 w-8 h-8 bg-background border border-border rounded-full flex items-center justify-center text-muted-foreground hover:text-foreground shadow-lg hover:scale-110 transition-all duration-200 z-20"
+            aria-label={isRightPanelCollapsed ? 'Expand right panel' : 'Collapse right panel'}
           >
-            <Icon name={isRightPanelCollapsed ? 'ChevronLeft' : 'ChevronRight'} size={12} />
+            <Icon name={isRightPanelCollapsed ? 'ChevronLeft' : 'ChevronRight'} size={16} />
           </button>
-
           {!isRightPanelCollapsed && (
             <div className="flex flex-col h-full">
               {/* Tab Navigation */}
-              <div className="flex border-b border-border">
+              <div className="flex border-b border-border bg-card/80 rounded-t-2xl overflow-hidden">
                 <button
                   onClick={() => setActiveRightTab('timeline')}
-                  className={`flex-1 px-4 py-3 text-sm font-medium transition-colors duration-200 ${
-                    activeRightTab === 'timeline' ?'text-primary border-b-2 border-primary bg-primary/5' :'text-muted-foreground hover:text-foreground'
-                  }`}
+                  className={`flex-1 px-6 py-4 text-base font-semibold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/40 ${activeRightTab === 'timeline' ? 'text-primary border-b-4 border-primary bg-primary/10' : 'text-muted-foreground hover:text-foreground'}`}
                 >
                   Timeline
                 </button>
                 <button
                   onClick={() => setActiveRightTab('context')}
-                  className={`flex-1 px-4 py-3 text-sm font-medium transition-colors duration-200 ${
-                    activeRightTab === 'context' ?'text-primary border-b-2 border-primary bg-primary/5' :'text-muted-foreground hover:text-foreground'
-                  }`}
+                  className={`flex-1 px-6 py-4 text-base font-semibold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/40 ${activeRightTab === 'context' ? 'text-primary border-b-4 border-primary bg-primary/10' : 'text-muted-foreground hover:text-foreground'}`}
                 >
                   Case Context
                 </button>
               </div>
-
               {/* Tab Content */}
-              <div className="flex-1 overflow-hidden">
+              <div className="flex-1 overflow-hidden rounded-b-2xl bg-transparent">
                 {activeRightTab === 'timeline' && (
                   <CaseTimelinePanel caseDetails={caseDetails} />
                 )}
@@ -98,7 +90,6 @@ const SwarmRoomRealTimeCollaboration = () => {
           )}
         </div>
       </main>
-
       <FloatingAIAssistant />
     </div>
   );

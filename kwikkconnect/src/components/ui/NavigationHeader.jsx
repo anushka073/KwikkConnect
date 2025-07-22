@@ -69,16 +69,16 @@ const NavigationHeader = () => {
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center space-x-1">
+        <nav className="hidden lg:flex items-center space-x-4">
           {navigationItems.map((item) => (
             <button
               key={item.path}
               onClick={() => handleNavigation(item.path)}
-              className={`flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
-                isActivePath(item.path)
-                  ? 'bg-primary text-primary-foreground'
-                  : 'text-muted-foreground hover:text-foreground hover:bg-muted'
-              }`}
+              className={`flex items-center space-x-2 px-4 py-2 rounded-md text-sm font-medium shadow transition-all duration-200
+                ${isActivePath(item.path)
+                  ? 'bg-gradient-to-r from-blue-500 to-blue-700 text-white shadow-lg scale-105'
+                  : 'bg-white/80 text-blue-700 hover:text-blue-900 hover:bg-blue-100 hover:shadow-lg hover:scale-105'}
+              `}
             >
               <Icon name={item.icon} size={16} />
               <span>{item.label}</span>
@@ -87,7 +87,7 @@ const NavigationHeader = () => {
         </nav>
 
         {/* Desktop Actions */}
-        <div className="hidden lg:flex items-center space-x-3">
+        <div className="hidden lg:flex items-center space-x-6">
           <Button
             variant="outline"
             size="sm"
@@ -97,14 +97,15 @@ const NavigationHeader = () => {
           >
             Create Case
           </Button>
-          <button className="p-2 text-muted-foreground hover:text-foreground transition-colors duration-200">
+          <button className="relative p-2 text-muted-foreground bg-white/80 rounded-full shadow transition-all duration-200 hover:bg-blue-100 hover:text-blue-900 hover:scale-110 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
             <Icon name="Bell" size={20} />
+            <span className="absolute top-1 left-5 w-2 h-2 bg-red-500 rounded-full shadow-md border-2 border-white"></span>
           </button>
-          <button className="p-2 text-muted-foreground hover:text-foreground transition-colors duration-200">
+          <button className="p-2 text-muted-foreground bg-white/80 rounded-full shadow transition-all duration-200 hover:bg-blue-100 hover:text-blue-900 hover:scale-110 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
             <Icon name="Settings" size={20} />
           </button>
-          <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center">
-            <Icon name="User" size={16} color="white" />
+          <div className="w-10 h-10 bg-gray-500 rounded-full flex items-center justify-center border-4 border-white shadow-lg transition-all duration-200 hover:scale-105 hover:shadow-xl">
+            <Icon name="User" size={20} color="white" />
           </div>
         </div>
 
